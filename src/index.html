@@ -1,0 +1,41 @@
+<html>
+<head>
+  <meta charset=utf-8 />
+  <title>Identifying Imagery</title>
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+  <!-- Load Leaflet from CDN-->
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/leaflet/0.7.3/leaflet.css" />
+  <script src="//cdn.jsdelivr.net/leaflet/0.7.3/leaflet.js"></script>
+
+  <!-- Load Esri Leaflet from CDN -->
+  <script src="//cdn.jsdelivr.net/leaflet.esri/1.0.0/esri-leaflet.js"></script>
+
+  <style>
+    body { margin:0; padding:0; }
+    #map { position: absolute; top:0; bottom:0; right:0; left:0; }
+  </style>
+</head>
+<body>
+
+<div id="map"></div>
+<script>
+
+
+   var renderingRule = { "rasterFunction":"126_Tanoak" };
+
+    var map = L.map('map').setView([36.230577, -118.253147], 10);
+
+    L.esri.basemapLayer('Gray').addTo(map);
+
+    var showRedwoods = L.esri.imageMapLayer({
+      url: 'http://184.72.55.235:6080/arcgis/rest/services/FOREST_TYPES/conus_foresttypeALB/ImageServer',
+      renderingRule: renderingRule
+
+    }).addTo(map);
+
+
+
+</script>
+
+</body>
+</html>
